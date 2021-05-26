@@ -26,8 +26,5 @@ namespace MySpotify.Views{
             (MyAnimation = new Animation(Properties.Resources.MySpotify, PictureBox)).Start();
             }
         #endregion
-        
-        #region FUNCTIONS
-        #endregion
         }
     }

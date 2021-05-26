@@ -39,18 +39,11 @@ namespace MySpotify.Views{
         #endregion
 
         #region EVENTS
-        #endregion
-
-        /*private void DataGridView_CellContentDoubleClick(Object Object, DataGridViewCellEventArgs DataGridViewCellEventArgs){
-            Artist Artist = DataGridView.Rows[DataGridViewCellEventArgs.RowIndex].Tag as Artist;
-            
-            Program.Dashboard.UpdateArtist(Artist);
-            }*/
-
         private void DataGridView_CellMouseDoubleClick(Object Object, DataGridViewCellMouseEventArgs DataGridViewCellMouseEventArgs){
             Artist Artist = DataGridView.Rows[DataGridViewCellMouseEventArgs.RowIndex].Tag as Artist;
             
             Dashboard.Instance.UpdateArtist(Artist);
             }
+        #endregion
         }
     }

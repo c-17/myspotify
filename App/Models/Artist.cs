@@ -39,9 +39,7 @@ namespace MySpotify.Models{
 
                     return (Image = Bitmap);
                     }
-                catch{
-                    //Console.WriteLine(Exception.StackTrace+" -> "+Exception.Message);
-                    }
+                catch{}
 
                 return (Image = Properties.Resources.Thumbnail);
                 }
@@ -84,12 +82,6 @@ namespace MySpotify.Models{
 
             Storage.AddArtist(this);
             }
-        #endregion
-        
-        #region FUNCTIONS
-        #endregion
-        
-        #region EVENTS
         #endregion
         }
     }

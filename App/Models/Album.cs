@@ -38,9 +38,7 @@ namespace MySpotify.Models{
 
                     return (Image = Bitmap);
                     }
-                catch{
-                    //Console.WriteLine(Exception.StackTrace+" -> "+Exception.Message);
-                    }
+                catch{}
 
                 return (Image = Properties.Resources.ic_album);
                 }

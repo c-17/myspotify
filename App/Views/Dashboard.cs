@@ -90,8 +90,6 @@ namespace MySpotify.Views{
             
                     PanelControls.Controls.Add(SearchControl.UpdateArtists(new List<Artist>{Artist}));
                     }
-
-                //Console.WriteLine(Response.Length.ToString());
                 }
             }
 

@@ -115,9 +115,6 @@
     <Compile Include="App\Views\WaitingControl.Designer.cs">
       <DependentUpon>WaitingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frameworks\CirclePictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Frameworks\Extensions.cs" />
     <Compile Include="Frameworks\Json\JsonArrayCollection.cs" />
     <Compile Include="Frameworks\Json\JsonBooleanValue.cs" />
