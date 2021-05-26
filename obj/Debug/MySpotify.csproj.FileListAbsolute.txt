@@ -1,0 +1,16 @@
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csprojAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Properties.Resources.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.GenerateResource.cache
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\bin\Debug\MySpotify.exe.config
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\bin\Debug\MySpotify.exe
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\bin\Debug\MySpotify.pdb
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.exe
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.pdb
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.SplashScreen.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.Login.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.Dashboard.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.ArtistControl.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.SearchControl.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.AlbumControl.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.WaitingControl.resources

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B4A6764-2C9A-402E-A12D-7508BA8E7A88}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MySpotify</RootNamespace>
+    <AssemblyName>MySpotify</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\Internet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\Models\Album.cs" />
+    <Compile Include="App\Models\Animation.cs" />
+    <Compile Include="App\Models\Artist.cs" />
+    <Compile Include="App\Models\Storage.cs" />
+    <Compile Include="App\Models\Track.cs" />
+    <Compile Include="App\Models\User.cs" />
+    <Compile Include="App\Views\AlbumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\AlbumControl.Designer.cs">
+      <DependentUpon>AlbumControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\ArtistControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\ArtistControl.Designer.cs">
+      <DependentUpon>ArtistControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Views\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Views\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\WaitingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\WaitingControl.Designer.cs">
+      <DependentUpon>WaitingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frameworks\CirclePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Frameworks\Extensions.cs" />
+    <Compile Include="Frameworks\Json\JsonArrayCollection.cs" />
+    <Compile Include="Frameworks\Json\JsonBooleanValue.cs" />
+    <Compile Include="Frameworks\Json\JsonCollection.cs" />
+    <Compile Include="Frameworks\Json\JsonGenerator.cs" />
+    <Compile Include="Frameworks\Json\JsonNumericValue.cs" />
+    <Compile Include="Frameworks\Json\JsonObject.cs" />
+    <Compile Include="Frameworks\Json\JsonObjectCollection.cs" />
+    <Compile Include="Frameworks\Json\JsonStringValue.cs" />
+    <Compile Include="Frameworks\Json\JsonTextParser.cs" />
+    <Compile Include="Frameworks\Json\JsonUtility.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="App\Views\AlbumControl.resx">
+      <DependentUpon>AlbumControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\ArtistControl.resx">
+      <DependentUpon>ArtistControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\WaitingControl.resx">
+      <DependentUpon>WaitingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MySpotify.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MySpotifySplashScreen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thumbnail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spotify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_navigate_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_navigate_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_exit_to_app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_album.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MyLoading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_song.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
