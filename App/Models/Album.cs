@@ -14,13 +14,16 @@ namespace MySpotify.Models{
         internal readonly Artist Artist;
 
         internal Int64 Id;
-
         internal readonly String Name;
-
         internal readonly String Genre;
-
+        internal readonly String Released;
+        private readonly String _Thumbnail;
+        private Image Image = null;
         internal Image Thumbnail{
             get{
+                if(Image != null)
+                    return Image;
+
                 try{
                     System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
@@ -33,19 +36,15 @@ namespace MySpotify.Models{
 
                     WebClient.Dispose();
 
-                    return Bitmap;
+                    return (Image = Bitmap);
                     }
                 catch{
                     //Console.WriteLine(Exception.StackTrace+" -> "+Exception.Message);
                     }
 
-                return Properties.Resources.ic_album;
+                return (Image = Properties.Resources.ic_album);
                 }
             }
-        
-        private readonly String _Thumbnail;
-
-        internal readonly String Released;
 
         internal List<Track> Tracks = new List<Track>();
         #endregion

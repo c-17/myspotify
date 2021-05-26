@@ -90,6 +90,8 @@ namespace MySpotify.Models{
 
                 String Response = Encoding.Default.GetString(Request.Result);
 
+                Response = Response.Replace("\"\"", "null");
+
                 Console.WriteLine("Albums: "+Response);
 
                 JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Response) as JsonObjectCollection;
@@ -122,6 +124,8 @@ namespace MySpotify.Models{
                 Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"track.php?m="+Album.Id);
 
                 String Response = Encoding.Default.GetString(Request.Result);
+
+                Response = Response.Replace("\"\"", "null");
 
                 Console.WriteLine("Tracks: "+Response);
 
@@ -184,6 +188,8 @@ namespace MySpotify.Models{
 
                 String Result = Encoding.Default.GetString(Response);
 
+                Result = Result.Replace(":\"\",", ":null,");
+
                 Console.WriteLine("GetAlbums: "+Result);
 
                 JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Result) as JsonObjectCollection;
@@ -193,10 +199,45 @@ namespace MySpotify.Models{
                 if(JsonArrayCollection != null){
                     List<Album> Albums = new List<Album>();
 
-                    foreach(JsonObjectCollection JsonAlbum in JsonArrayCollection)
-                        Albums.Add(new Album(Artist, JsonAlbum));
+                    foreach(JsonObjectCollection JsonAlbum in JsonArrayCollection){
+                        Album Album = new Album(Artist, JsonAlbum);
+
+                        Album.Tracks = await GetTracksAsync(Album);
+
+                        Albums.Add(Album);
+                        }
 
                     return Albums;
+                    }
+                }
+            catch{}
+
+            return null;
+            }
+
+        internal async static Task<List<Track>> GetTracksAsync(Album Album){
+            try{
+                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"track.php?m="+Album.Id);
+
+                Byte[] Response = await Request;
+
+                String Result = Encoding.Default.GetString(Response);
+
+                Result = Result.Replace(":\"\",", ":null,");
+
+                Console.WriteLine("GetTracks: "+Result);
+
+                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Result) as JsonObjectCollection;
+
+                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["track"] as JsonArrayCollection;
+                
+                if(JsonArrayCollection != null){
+                    List<Track> Tracks = new List<Track>();
+
+                    foreach(JsonObjectCollection JsonTrack in JsonArrayCollection)
+                        Tracks.Add(new Track(Album, JsonTrack));
+
+                    return Tracks;
                     }
                 }
             catch{}

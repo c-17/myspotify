@@ -47,12 +47,16 @@ namespace MySpotify.Views{
         #endregion
         
         #region FUNCTIONS
-        internal Dashboard UpdateArtist(Artist Artist){
+        internal Dashboard UpdateArtist(Artist Artist, Album Album = null){
             LabelUser.Text = Program.User.Name;
 
             PanelControls.Controls.Clear();
+
+            ArtistControl.DpiChangedAfterParent += new EventHandler(delegate{
+                Console.WriteLine("Validate");
+                });
             
-            PanelControls.Controls.Add(ArtistControl.UpdateArtist(Artist));
+            PanelControls.Controls.Add(ArtistControl.UpdateArtist(Artist, Album));
 
             return this;
             }

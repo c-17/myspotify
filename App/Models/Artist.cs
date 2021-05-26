@@ -18,9 +18,13 @@ namespace MySpotify.Models{
         internal readonly String Country;
         internal readonly String Biography;
         private readonly String _Thumbnail;
+        private Image Image = null;
 
         internal Image Thumbnail{
             get{
+                if(Image != null)
+                    return Image;
+
                 try{
                     System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
@@ -33,13 +37,13 @@ namespace MySpotify.Models{
 
                     WebClient.Dispose();
 
-                    return Bitmap;
+                    return (Image = Bitmap);
                     }
                 catch{
                     //Console.WriteLine(Exception.StackTrace+" -> "+Exception.Message);
                     }
 
-                return Properties.Resources.Thumbnail;
+                return (Image = Properties.Resources.Thumbnail);
                 }
             }
 

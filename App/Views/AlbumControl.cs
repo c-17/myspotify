@@ -44,15 +44,7 @@ namespace MySpotify.Views{
 
             if(Album.Tracks != null){
                 foreach(Track Track in Album.Tracks){
-
-                    TimeSpan t = TimeSpan.FromMilliseconds(Track.Duration);
-                    string answer = string.Format("{1:D2}m:{2:D2}s", 
-                        t.Hours, 
-                        t.Minutes, 
-                        t.Seconds, 
-                        t.Milliseconds);
-
-                    DataGridViewTracks.Rows.Add(new Object[]{Properties.Resources.ic_song, Track.Name, answer});
+                    DataGridViewTracks.Rows.Add(new Object[]{Properties.Resources.ic_song, Track.Name, Track.Duration});
 
                     DataGridViewTracks.Rows[DataGridViewTracks.Rows.Count-1].Tag = Track;
                     }
@@ -61,8 +53,11 @@ namespace MySpotify.Views{
             return this;
             }
         #endregion
-        
+
         #region EVENTS
+        private void ButtonBackClick(Object Object, EventArgs EventArgs){
+            Dashboard.Instance.UpdateArtist(Album.Artist, Album);
+            }
         #endregion
         }
     }

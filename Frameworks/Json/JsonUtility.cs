@@ -71,8 +71,6 @@ namespace System.Net.Json
 
         internal static string UnEscapeString(string text)
         {
-            if(text.Length == 0)
-                return text;
             text = text.Trim();
 
             if (text.StartsWith("\"")) text = text.Remove(0, 1);

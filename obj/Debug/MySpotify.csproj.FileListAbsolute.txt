@@ -1,4 +1,3 @@
-C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csprojAssemblyReference.cache
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Properties.Resources.resources
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.GenerateResource.cache
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.CoreCompileInputs.cache

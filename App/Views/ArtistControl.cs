@@ -18,6 +18,8 @@ namespace MySpotify.Views{
 
         #region PROPERTIES
         internal Artist Artist;
+
+        internal Album Album;
         #endregion
         
         #region CONSTRUCTORS
@@ -31,8 +33,10 @@ namespace MySpotify.Views{
         #endregion
         
         #region FUNCTIONS
-        internal ArtistControl UpdateArtist(Artist Artist){
+        internal ArtistControl UpdateArtist(Artist Artist, Album Album = null){
             this.Artist = Artist;
+
+            ButtonBack.Visible = (Album != null);
 
             LabelName.Text = Artist.Name;
 
@@ -43,10 +47,10 @@ namespace MySpotify.Views{
             DataGridView.Rows.Clear();
 
             if(Artist.Albums != null){
-                foreach(Album Album in Artist.Albums){
-                    DataGridView.Rows.Add(new Object[]{Album.Thumbnail, Album.Name});
+                foreach(Album A1bum in Artist.Albums){
+                    DataGridView.Rows.Add(new Object[]{A1bum.Thumbnail, A1bum.Name});
 
-                    DataGridView.Rows[DataGridView.Rows.Count-1].Tag = Album;
+                    DataGridView.Rows[DataGridView.Rows.Count-1].Tag = A1bum;
                     }
                 }
 
@@ -56,8 +60,12 @@ namespace MySpotify.Views{
         
         #region EVENTS
         private void DataGridViewCellMouseDoubleClick(Object Object, DataGridViewCellMouseEventArgs DataGridViewCellMouseEventArgs){
-            Album Album = DataGridView.Rows[DataGridViewCellMouseEventArgs.RowIndex].Tag as Album;
+            Album = DataGridView.Rows[DataGridViewCellMouseEventArgs.RowIndex].Tag as Album;
             
+            Dashboard.Instance.UpdateAlbum(Album);
+            }
+
+        private void ButtonBackClick(Object Object, EventArgs EventArgs){
             Dashboard.Instance.UpdateAlbum(Album);
             }
         #endregion
