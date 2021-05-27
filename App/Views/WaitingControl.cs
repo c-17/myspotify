@@ -23,7 +23,7 @@ namespace MySpotify.Views{
             
             Dock = DockStyle.Fill;
 
-            (MyAnimation = new Animation(Properties.Resources.MySpotify, PictureBox)).Start();
+            (MyAnimation = new Animation(Properties.Resources.MyLoading, PictureBox)).Start();
             }
         #endregion
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.IO;
 using System.Text;
 using System.Management;
@@ -13,9 +14,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using System.IO;
-
-using System.Net.Json;
 
 using MySpotify.Models;
 
@@ -52,10 +50,6 @@ namespace MySpotify.Views{
 
             PanelControls.Controls.Clear();
 
-            ArtistControl.DpiChangedAfterParent += new EventHandler(delegate{
-                Console.WriteLine("Validate");
-                });
-            
             PanelControls.Controls.Add(ArtistControl.UpdateArtist(Artist, Album));
 
             return this;
@@ -72,25 +66,22 @@ namespace MySpotify.Views{
         
         #region EVENTS
         private async void TextBoxSearcherKeyUp(Object Object, KeyEventArgs KeyEventArgs){
+            PanelControls.Controls.Clear();
+
             if(TextBoxSearcher.Text.Length >= 2){
                 String Searching = Uri.EscapeDataString(TextBoxSearcher.Text.ToLower());
 
-                if(Storage.ContainsArtist(Searching)){
-                    PanelControls.Controls.Clear();
-            
+                if(Storage.ContainsArtist(Searching))
                     PanelControls.Controls.Add(SearchControl.UpdateArtists(new List<Artist>{Storage.GetArtist(Searching)}));
+                else{
+                    Artist Artist = await Internet.SearchArtist(Searching);
 
-                    return;
-                    }
-                
-                Artist Artist = await Internet.SearchArtistAsync(Searching);
-
-                if(Artist != null){
-                    PanelControls.Controls.Clear();
-            
-                    PanelControls.Controls.Add(SearchControl.UpdateArtists(new List<Artist>{Artist}));
+                    if(Artist != null)
+                        PanelControls.Controls.Add(SearchControl.UpdateArtists(new List<Artist>{Artist}));
                     }
                 }
+            
+            PanelControls.Controls.Add(WaitingControl);
             }
 
         private void ButtonExploreClick(Object Object, EventArgs EventArgs){
@@ -102,11 +93,9 @@ namespace MySpotify.Views{
                 while(true){
                     if(Internet.IsConnected){
                         Artist Artist;
-                        if((Artist = Internet.SearchRandomArtist()) != null){
-                            UpdateArtist(Artist);
-                        
+
+                        if((Artist = Internet.GetRandomArtist()) != null && UpdateArtist(Artist) != null)
                             break;
-                            }
                         }
                     else
                         Thread.Sleep(2000);

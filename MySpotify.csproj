@@ -51,6 +51,9 @@
     <ApplicationIcon>Spotify.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -115,17 +118,7 @@
     <Compile Include="App\Views\WaitingControl.Designer.cs">
       <DependentUpon>WaitingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frameworks\Extensions.cs" />
-    <Compile Include="Frameworks\Json\JsonArrayCollection.cs" />
-    <Compile Include="Frameworks\Json\JsonBooleanValue.cs" />
-    <Compile Include="Frameworks\Json\JsonCollection.cs" />
-    <Compile Include="Frameworks\Json\JsonGenerator.cs" />
-    <Compile Include="Frameworks\Json\JsonNumericValue.cs" />
-    <Compile Include="Frameworks\Json\JsonObject.cs" />
-    <Compile Include="Frameworks\Json\JsonObjectCollection.cs" />
-    <Compile Include="Frameworks\Json\JsonStringValue.cs" />
-    <Compile Include="Frameworks\Json\JsonTextParser.cs" />
-    <Compile Include="Frameworks\Json\JsonUtility.cs" />
+    <Compile Include="App\Extensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\Views\AlbumControl.resx">
@@ -176,9 +169,6 @@
     <None Include="Resources\MySpotify.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MySpotifySplashScreen.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Thumbnail.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -197,12 +187,10 @@
     <None Include="Resources\ic_album.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MyLoading.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ic_song.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\MyLoading.gif" />
     <Content Include="Spotify.ico" />
   </ItemGroup>
   <ItemGroup>

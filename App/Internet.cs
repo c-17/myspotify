@@ -9,13 +9,16 @@ using System.Collections.Specialized;
 using System.Reflection;
 using System.Diagnostics;
 
+using Newtonsoft.Json;
 
-using System.Net.Json;
+using System.Data;
+
+using System.Drawing;
 
 namespace MySpotify.Models{
     public class Internet: WebClient{
         #region CONSTANTS
-        protected const String WebService = "https://theaudiodb.com/api/v1/json/1/";
+        internal const String WebService = "https://theaudiodb.com/api/v1/json/1/";
         #endregion
 
         #region PROPERTIES
@@ -40,169 +43,97 @@ namespace MySpotify.Models{
             WebRequest.Timeout = 60000;
             return WebRequest;
             }
-        
-        private async static Task<Byte[]> SearchRandomArtist(Int64 ArtistId){
-            Byte[] Response = null;
+        #endregion
 
+        #region CONNECTIVITY
+        private async static Task<String> Get(String URL){
             try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"artist.php?i="+ArtistId);
+                using(Internet Internet = new Internet()){
+                    Byte[] Response = await Internet.DownloadDataTaskAsync(URL);
 
-                Response = await Request;
-
-                return Response;
+                    return Encoding.Default.GetString(Response);
+                    }
                 }
             catch(Exception Exception){
                 Console.WriteLine(Exception.StackTrace);
                 }
 
-            return Response;
+            return null;
             }
-        internal static Artist SearchRandomArtist(){
+        
+        private async static Task<Image> GetThumbnail(String URL, Image Default){
+            if(URL.Length == 0 || URL == null)
+                return Default;
+
+            try{
+                using(Internet Internet = new Internet()){
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                    Stream Stream = await Internet.OpenReadTaskAsync(URL);
+                    
+                    Bitmap Bitmap = new Bitmap(Stream);
+
+                    Stream.Flush();
+                    Stream.Close();
+                    
+                    return Bitmap;
+                    }
+                }
+            catch(Exception Exception){
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
+                }
+
+            return Default;
+            }
+
+        internal static Artist GetRandomArtist(){
             try{
                 Int32 ArtistId = new Random().Next(111233, 112500)+1;
 
-                String Response = Encoding.Default.GetString(SearchRandomArtist(ArtistId).Result);
-
-                Console.WriteLine("SearchRandomArtist: "+Response);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Response) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["artists"] as JsonArrayCollection;
+                String Response = Get(WebService+"artist.php?i="+ArtistId).Result;
                 
-                if(JsonArrayCollection != null){
-                    Artist Artist = new Artist(JsonArrayCollection[0] as JsonObjectCollection);
+                Console.WriteLine("GetRandomArtist: "+Response);
 
-                    Artist.Albums = GetAlbums(Artist);
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
+
+                DataTable DataTable = DataSet.Tables["artists"];
+
+                if(DataTable.Rows.Count > 0){
+                    Artist Artist = new Artist(DataTable.Rows[0]);
+
+                    Artist.Thumbnail = GetThumbnail(Artist.URLThumbnail, Properties.Resources.Thumbnail).Result;
+
+                    Artist.Albums = GetAlbums(Artist).Result;
 
                     return Artist;
                     }
                 }
             catch(Exception Exception){
-                Console.WriteLine(Exception.StackTrace);
-                }
-
-            return null;
-            }
-
-        internal static List<Album> GetAlbums(Artist Artist){
-            try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"album.php?i="+Artist.Id);
-
-                String Response = Encoding.Default.GetString(Request.Result);
-
-                Response = Response.Replace("\"\"", "null");
-
-                Console.WriteLine("Albums: "+Response);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Response) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["album"] as JsonArrayCollection;
-                
-                if(JsonArrayCollection != null){
-                    List<Album> Albums = new List<Album>();
-
-                    foreach(JsonObjectCollection JsonAlbum in JsonArrayCollection){
-                        Album Album = new Album(Artist, JsonAlbum);
-
-                        Album.Tracks = GetTracks(Album);
-
-                        Albums.Add(Album);
-                        }
-
-                    return Albums;
-                    }
-                }
-            catch(Exception Exception){
-                Console.WriteLine(Exception.StackTrace);
-                }
-
-            return null;
-            }
-
-        internal static List<Track> GetTracks(Album Album){
-            try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"track.php?m="+Album.Id);
-
-                String Response = Encoding.Default.GetString(Request.Result);
-
-                Response = Response.Replace("\"\"", "null");
-
-                Console.WriteLine("Tracks: "+Response);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Response) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["track"] as JsonArrayCollection;
-                
-                if(JsonArrayCollection != null){
-                    List<Track> Tracks = new List<Track>();
-
-                    foreach(JsonObjectCollection JsonTrack in JsonArrayCollection)
-                        Tracks.Add(new Track(Album, JsonTrack));
-
-                    return Tracks;
-                    }
-                }
-            catch(Exception Exception){
-                Console.WriteLine(Exception.StackTrace);
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
                 }
 
             return null;
             }
         
-        internal async static Task<Artist> SearchArtistAsync(String Searching){
+        internal async static Task<List<Album>> GetAlbums(Artist Artist){
             try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"search.php?s="+Searching);
+                String Response = await Get(WebService+"album.php?i="+Artist.Id);
 
-                Byte[] Response = await Request;
-
-                String Result = Encoding.Default.GetString(Response);
-
-                Console.WriteLine("SearchArtist: "+Result);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Result) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["artists"] as JsonArrayCollection;
+                Console.WriteLine("GetAlbums: "+Response);
                 
-                if(JsonArrayCollection != null){
-                    Artist Artist = new Artist(JsonArrayCollection[0] as JsonObjectCollection);
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
 
-                    Artist.Albums = await GetAlbumsAsync(Artist);
-
-                    return Artist;
-                    }
-
-                return null;
-                }
-            catch(Exception Exception){
-                Console.WriteLine(Exception.StackTrace);
-                }
-
-            return null;
-            }
-
-        internal async static Task<List<Album>> GetAlbumsAsync(Artist Artist){
-            try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"album.php?i="+Artist.Id);
-
-                Byte[] Response = await Request;
-
-                String Result = Encoding.Default.GetString(Response);
-
-                Result = Result.Replace(":\"\",", ":null,");
-
-                Console.WriteLine("GetAlbums: "+Result);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Result) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["album"] as JsonArrayCollection;
+                DataTable DataTable = DataSet.Tables["album"];
                 
-                if(JsonArrayCollection != null){
+                if(DataTable.Rows.Count > 0){
                     List<Album> Albums = new List<Album>();
 
-                    foreach(JsonObjectCollection JsonAlbum in JsonArrayCollection){
-                        Album Album = new Album(Artist, JsonAlbum);
+                    foreach(DataRow DataRow in DataTable.Rows){
+                        Album Album = new Album(Artist, DataRow);
 
-                        Album.Tracks = await GetTracksAsync(Album);
+                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.ic_album);
+
+                        Album.Tracks = await GetTracks(Album);
 
                         Albums.Add(Album);
                         }
@@ -210,37 +141,115 @@ namespace MySpotify.Models{
                     return Albums;
                     }
                 }
-            catch{}
+            catch(Exception Exception){
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
+                }
 
             return null;
             }
 
-        internal async static Task<List<Track>> GetTracksAsync(Album Album){
+        internal async static Task<List<Track>> GetTracks(Album Album){
             try{
-                Task<Byte[]> Request = new Internet().DownloadDataTaskAsync(WebService+"track.php?m="+Album.Id);
+                String Response = await Get(WebService+"track.php?m="+Album.Id);
 
-                Byte[] Response = await Request;
-
-                String Result = Encoding.Default.GetString(Response);
-
-                Result = Result.Replace(":\"\",", ":null,");
-
-                Console.WriteLine("GetTracks: "+Result);
-
-                JsonObjectCollection JsonObjectCollection = new JsonTextParser().Parse(Result) as JsonObjectCollection;
-
-                JsonArrayCollection JsonArrayCollection = JsonObjectCollection["track"] as JsonArrayCollection;
+                Console.WriteLine("GetTracks: "+Response);
                 
-                if(JsonArrayCollection != null){
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
+
+                DataTable DataTable = DataSet.Tables["track"];
+                
+                if(DataTable.Rows.Count > 0){
                     List<Track> Tracks = new List<Track>();
 
-                    foreach(JsonObjectCollection JsonTrack in JsonArrayCollection)
-                        Tracks.Add(new Track(Album, JsonTrack));
+                    foreach(DataRow DataRow in DataTable.Rows)
+                        Tracks.Add(new Track(Album, DataRow));
 
                     return Tracks;
                     }
                 }
+            catch(Exception Exception){
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
+                }
+
+            return null;
+            }
+
+        internal async static Task<Artist> SearchArtist(String Searching){
+            try{
+                String Response = await Get(WebService+"search.php?s="+Searching);
+
+                Console.WriteLine("SearchArtist: "+Response);
+                
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
+
+                DataTable DataTable = DataSet.Tables["artists"];
+                
+                if(DataTable.Rows.Count > 0){
+                    Artist Artist = new Artist(DataTable.Rows[0]);
+
+                    Artist.Thumbnail = await GetThumbnail(Artist.URLThumbnail, Properties.Resources.Thumbnail);
+
+                    return Artist;
+                    }
+                }
             catch{}
+
+            return null;
+            }
+        
+        internal async static Task<List<Album>> SearchAlbums(Artist Artist){
+            try{
+                String Response = await Get(WebService+"album.php?i="+Artist.Id);
+
+                Console.WriteLine("SearchAlbums: "+Response);
+                
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
+
+                DataTable DataTable = DataSet.Tables["album"];
+                
+                if(DataTable.Rows.Count > 0){
+                    List<Album> Albums = new List<Album>();
+
+                    foreach(DataRow DataRow in DataTable.Rows){
+                        Album Album = new Album(Artist, DataRow);
+
+                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.ic_album);
+
+                        Albums.Add(Album);
+                        }
+
+                    return Albums;
+                    }
+                }
+            catch(Exception Exception){
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
+                }
+
+            return null;
+            }
+        
+        internal async static Task<List<Track>> SearchTracks(Album Album){
+            try{
+                String Response = await Get(WebService+"track.php?m="+Album.Id);
+
+                Console.WriteLine("SearchTracks: "+Response);
+                
+                DataSet DataSet = JsonConvert.DeserializeObject<DataSet>(Response);
+
+                DataTable DataTable = DataSet.Tables["track"];
+                
+                if(DataTable.Rows.Count > 0){
+                    List<Track> Tracks = new List<Track>();
+
+                    foreach(DataRow DataRow in DataTable.Rows)
+                        Tracks.Add(new Track(Album, DataRow));
+
+                    return Tracks;
+                    }
+                }
+            catch(Exception Exception){
+                Console.WriteLine(Exception.Message+": "+Exception.StackTrace);
+                }
 
             return null;
             }

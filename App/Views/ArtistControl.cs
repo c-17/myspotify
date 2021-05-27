@@ -5,21 +5,22 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 using MySpotify.Models;
+using System.Reflection;
 
 namespace MySpotify.Views{
     internal partial class ArtistControl : UserControl{
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);
-
         #region PROPERTIES
         internal Artist Artist;
 
         internal Album Album;
+
+        private readonly WaitingControl WaitingControl = new WaitingControl();
         #endregion
         
         #region CONSTRUCTORS
@@ -45,13 +46,34 @@ namespace MySpotify.Views{
             PanelBackground.BackgroundImage = Artist.Thumbnail;
 
             DataGridView.Rows.Clear();
+            
+            PanelControls.Controls.Clear();
 
-            if(Artist.Albums != null){
+            if(Artist.Albums != null && Artist.Albums.Count > 0){
                 foreach(Album A1bum in Artist.Albums){
                     DataGridView.Rows.Add(new Object[]{A1bum.Thumbnail, A1bum.Name});
 
                     DataGridView.Rows[DataGridView.Rows.Count-1].Tag = A1bum;
                     }
+
+                PanelControls.Controls.Add(DataGridView);
+                }
+            else{
+                PanelControls.Controls.Add(WaitingControl);
+
+                new Thread(new ThreadStart(delegate{
+                    Artist.Albums = Internet.SearchAlbums(Artist).Result;
+
+                    foreach(Album A1bum in Artist.Albums){
+                        DataGridView.Rows.Add(new Object[]{A1bum.Thumbnail, A1bum.Name});
+
+                        DataGridView.Rows[DataGridView.Rows.Count-1].Tag = A1bum;
+                        }
+                    
+                    PanelControls.Controls.Clear();
+                    
+                    PanelControls.Controls.Add(DataGridView);
+                    })).Start();
                 }
 
             return this;

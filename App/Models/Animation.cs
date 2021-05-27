@@ -11,8 +11,6 @@ using System.IO;
 
 using System.Drawing.Imaging;
 
-using System.Net.Json;
-
 namespace MySpotify.Models{
     internal class Animation{
         #region PROPERTIES
@@ -35,7 +33,7 @@ namespace MySpotify.Models{
             FrameCount = Image.GetFrameCount(FrameDimension);
 
             Timer = new System.Windows.Forms.Timer{
-                Interval = (1000/FrameCount)
+                Interval = (1500/FrameCount)
                 };
 
             Timer.Tick += new EventHandler(delegate{

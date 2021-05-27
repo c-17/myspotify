@@ -12,6 +12,12 @@ namespace MySpotify.Models{
         internal readonly String Name;
 
         internal readonly String Password;
+
+        internal readonly List<Artist> Artists = new List<Artist>();
+
+        internal readonly List<Album> Albums = new List<Album>();
+
+        internal readonly List<Track> Tracks = new List<Track>();
         #endregion
         
         #region CONSTRUCTORS

@@ -6,13 +6,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Json;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+
+using Newtonsoft.Json;
 
 namespace MySpotify.Models{
     internal class Track{
@@ -44,15 +45,15 @@ namespace MySpotify.Models{
 
             this._Duration = Duration;
             }
-
-        internal Track(Album Album, JsonObjectCollection JsonObjectCollection){
+        
+        internal Track(Album Album, DataRow DataRow){
             this.Album = Album;
 
-            this.Id = Convert.ToInt64(JsonObjectCollection["idTrack"].GetValue());
+            this.Id = Convert.ToInt64(DataRow["idTrack"]);
 
-            this.Name = Convert.ToString(JsonObjectCollection["strTrack"].GetValue());
+            this.Name = Convert.ToString(DataRow["strTrack"]);
             
-            this._Duration = Convert.ToInt64(JsonObjectCollection["intDuration"].GetValue());
+            this._Duration = Convert.ToInt64(DataRow["intDuration"]);
             }
         #endregion
         }

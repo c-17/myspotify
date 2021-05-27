@@ -11,15 +11,13 @@ using System.IO;
 
 using System.Drawing.Imaging;
 
-using System.Net.Json;
-
 using MySpotify.Models;
 
 namespace MySpotify.Views{
     public partial class SplashScreen:Form{
 
-        /*[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);*/
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);
 
         #region PROPERTIES
         private readonly Thread ThreadLoading;
@@ -39,9 +37,9 @@ namespace MySpotify.Views{
 
             InitializeComponent();
 
-            //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             
-            (MyAnimation = new Animation(Properties.Resources.MySpotifySplashScreen, PictureBoxSplashScreen)).Start();
+            (MyAnimation = new Animation(Properties.Resources.MySpotify, PictureBoxSplashScreen)).Start();
             
             (ThreadLoading = new Thread(new ThreadStart(Loading))).Start();
 
@@ -57,7 +55,7 @@ namespace MySpotify.Views{
             
             while(!Finish){
                 if(Internet.IsConnected){
-                    if((Artist = Internet.SearchRandomArtist()) != null)
+                    if((Artist = Internet.GetRandomArtist()) != null)
                         Finish = true;
                     /*if(Internet.SearchRandomArtist(out JsonObjectCollection JsonObjectCollection)){
                         JsonArrayCollection JsonArrayCollection = JsonObjectCollection["artists"] as JsonArrayCollection;
@@ -84,6 +82,9 @@ namespace MySpotify.Views{
             catch(Exception Exception){
                 Console.WriteLine(Exception.StackTrace);
                 }*/
+            MyAnimation.Stop();
+
+            Close();
             }
 
         private void FadeEffect(){
@@ -96,7 +97,7 @@ namespace MySpotify.Views{
 
         #region EVENTS
         private void Loading(){
-            Int32 LoadingTime = 0;
+            /*Int32 LoadingTime = 0;
             
             String LoadingText = LoadingMessage;
 
@@ -113,17 +114,12 @@ namespace MySpotify.Views{
                 LabelLoading.Text = LoadingText;
 
                 Thread.Sleep(250);
-                }
-
-            MyAnimation.Stop();
-
-            Close();
+                }*/
             }
         
         private void MySplashScreenFormClosing(Object Object, FormClosingEventArgs FormClosingEventArgs){
             ThreadLoading.Abort();
             }
         #endregion
-
         }
     }

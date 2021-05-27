@@ -5,19 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
+using System.Reflection;
 
 using MySpotify.Models;
 
 namespace MySpotify.Views{
     internal partial class AlbumControl : UserControl{
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);
-
         #region PROPERTIES
         internal Album Album;
+
+        private readonly WaitingControl WaitingControl = new WaitingControl();
         #endregion
         
         #region CONSTRUCTORS
@@ -40,14 +40,31 @@ namespace MySpotify.Views{
 
             PanelBackground.BackgroundImage = Album.Thumbnail;
 
-            DataGridViewTracks.Rows.Clear();
+            DataGridView.Rows.Clear();
 
-            if(Album.Tracks != null){
+            if(Album.Tracks != null && Album.Tracks.Count > 0){
                 foreach(Track Track in Album.Tracks){
-                    DataGridViewTracks.Rows.Add(new Object[]{Properties.Resources.ic_song, Track.Name, Track.Duration});
+                    DataGridView.Rows.Add(new Object[]{Properties.Resources.ic_song, Track.Name, Track.Duration});
 
-                    DataGridViewTracks.Rows[DataGridViewTracks.Rows.Count-1].Tag = Track;
+                    DataGridView.Rows[DataGridView.Rows.Count-1].Tag = Track;
                     }
+                }
+            else{
+                PanelControls.Controls.Add(WaitingControl);
+
+                new Thread(new ThreadStart(delegate{
+                    Album.Tracks = Internet.GetTracks(Album).Result;
+                    
+                    foreach(Track Track in Album.Tracks){
+                        DataGridView.Rows.Add(new Object[]{Properties.Resources.ic_song, Track.Name, Track.Duration});
+
+                        DataGridView.Rows[DataGridView.Rows.Count-1].Tag = Track;
+                        }
+                    
+                    PanelControls.Controls.Clear();
+
+                    PanelControls.Controls.Add(DataGridView);
+                    })).Start();
                 }
 
             return this;

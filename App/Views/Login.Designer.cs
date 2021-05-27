@@ -65,7 +65,7 @@ namespace MySpotify.Views
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = global::MySpotify.Properties.Resources.Spotify1;
+            this.pictureBox1.BackgroundImage = global::MySpotify.Properties.Resources.Spotify;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;

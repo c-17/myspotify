@@ -35,7 +35,7 @@ namespace MySpotify.Views
             // 
             // PictureBox
             // 
-            this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox.Location = new System.Drawing.Point(0, 0);
             this.PictureBox.Margin = new System.Windows.Forms.Padding(0);

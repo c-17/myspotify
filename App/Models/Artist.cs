@@ -5,8 +5,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Data;
 using System.Net;
-using System.Net.Json;
+
+using Newtonsoft.Json;
 
 namespace MySpotify.Models{
     internal class Artist{
@@ -17,39 +19,14 @@ namespace MySpotify.Models{
         internal readonly String Genre;
         internal readonly String Country;
         internal readonly String Biography;
-        private readonly String _Thumbnail;
-        private Image Image = null;
-
-        internal Image Thumbnail{
-            get{
-                if(Image != null)
-                    return Image;
-
-                try{
-                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                    WebClient WebClient = new WebClient();
-                    Stream Stream = WebClient.OpenRead(_Thumbnail);
-                    Bitmap Bitmap = new Bitmap(Stream);
-
-                    Stream.Flush();
-                    Stream.Close();
-
-                    WebClient.Dispose();
-
-                    return (Image = Bitmap);
-                    }
-                catch{}
-
-                return (Image = Properties.Resources.Thumbnail);
-                }
-            }
+        internal readonly String URLThumbnail;
+        internal Image Thumbnail;
 
         internal List<Album> Albums = new List<Album>();
         #endregion
         
         #region CONSTRUCTORS
-        internal Artist(Int64 Id, String Name, String Style, String Genre, String Country, String Biography, String Thumbnail){
+        internal Artist(Int64 Id, String Name, String Style, String Genre, String Country, String Biography, String URLThumbnail){
             this.Id = Id;
 
             this.Name = Name;
@@ -62,23 +39,25 @@ namespace MySpotify.Models{
             
             this.Biography = Biography;
 
-            this._Thumbnail = Thumbnail;
+            this.URLThumbnail = URLThumbnail;
+
+            Storage.AddArtist(this);
             }
 
-        internal Artist(JsonObjectCollection JsonObjectCollection){
-            this.Id = Convert.ToInt64(JsonObjectCollection["idArtist"].GetValue());
+        internal Artist(DataRow DataRow){
+            this.Id = Convert.ToInt64(DataRow["idArtist"]);
 
-            this.Name = Convert.ToString(JsonObjectCollection["strArtist"].GetValue());
+            this.Name = Convert.ToString(DataRow["strArtist"]);
 
-            this.Style = Convert.ToString(JsonObjectCollection["strStyle"].GetValue());
+            this.Style = Convert.ToString(DataRow["strStyle"]);
 
-            this.Genre = Convert.ToString(JsonObjectCollection["strGenre"].GetValue());
+            this.Genre = Convert.ToString(DataRow["strGenre"]);
 
-            this.Country = Convert.ToString(JsonObjectCollection["strCountry"].GetValue());
+            this.Country = Convert.ToString(DataRow["strCountry"]);
 
-            this.Biography = Convert.ToString(JsonObjectCollection["strBiographyEN"].GetValue());
+            this.Biography = Convert.ToString(DataRow["strBiographyEN"]);
 
-            this._Thumbnail = Convert.ToString(JsonObjectCollection["strArtistThumb"].GetValue());
+            this.URLThumbnail = Convert.ToString(DataRow["strArtistThumb"]);
 
             Storage.AddArtist(this);
             }
