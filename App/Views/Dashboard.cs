@@ -23,7 +23,7 @@ namespace MySpotify.Views{
         private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);
 
         #region PROPERTIES
-        private readonly WaitingControl WaitingControl = new WaitingControl();
+        internal readonly WaitingControl WaitingControl = new WaitingControl();
         
         private readonly ArtistControl ArtistControl = new ArtistControl();
         
@@ -39,7 +39,7 @@ namespace MySpotify.Views{
             InitializeComponent();
 
             Instance = this;
-            
+
             TextBoxSearcher.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, TextBoxSearcher.Width, TextBoxSearcher.Height, 5, 5));
             }
         #endregion

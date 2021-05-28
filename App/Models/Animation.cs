@@ -43,7 +43,7 @@ namespace MySpotify.Models{
         #endregion
 
         #region FUNCTIONS
-        internal void Start() => Timer.Enabled = true;
+        internal void Start() => Timer.Start();
 
         internal void Stop() => Timer.Stop();
 

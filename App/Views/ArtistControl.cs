@@ -19,8 +19,6 @@ namespace MySpotify.Views{
         internal Artist Artist;
 
         internal Album Album;
-
-        private readonly WaitingControl WaitingControl = new WaitingControl();
         #endregion
         
         #region CONSTRUCTORS
@@ -30,6 +28,10 @@ namespace MySpotify.Views{
             Dock = DockStyle.Fill;
 
             PanelBackground2.BackColor = Color.FromArgb(75, 24, 202, 88);
+
+            ParentChanged += new EventHandler(ArtistControlParentChanged);
+
+            DataGridView.MouseWheel += new MouseEventHandler(DataGridViewMouseWheel);
             }
         #endregion
         
@@ -57,9 +59,11 @@ namespace MySpotify.Views{
                     }
 
                 PanelControls.Controls.Add(DataGridView);
+
+                ActiveControl = DataGridView;
                 }
             else{
-                PanelControls.Controls.Add(WaitingControl);
+                PanelControls.Controls.Add(Dashboard.Instance.WaitingControl);
 
                 new Thread(new ThreadStart(delegate{
                     Artist.Albums = Internet.SearchAlbums(Artist).Result;
@@ -73,6 +77,8 @@ namespace MySpotify.Views{
                     PanelControls.Controls.Clear();
                     
                     PanelControls.Controls.Add(DataGridView);
+                
+                    ActiveControl = DataGridView;
                     })).Start();
                 }
 
@@ -81,14 +87,34 @@ namespace MySpotify.Views{
         #endregion
         
         #region EVENTS
+        private void ArtistControlParentChanged(Object Object, EventArgs EventArgs){
+            /*if(Parent != null && Visible)
+                ActiveControl = DataGridView;*/
+            }
+
+        private void ButtonBackClick(Object Object, EventArgs EventArgs){
+            Dashboard.Instance.UpdateAlbum(Album);
+            }
+
         private void DataGridViewCellMouseDoubleClick(Object Object, DataGridViewCellMouseEventArgs DataGridViewCellMouseEventArgs){
             Album = DataGridView.Rows[DataGridViewCellMouseEventArgs.RowIndex].Tag as Album;
             
             Dashboard.Instance.UpdateAlbum(Album);
             }
+        
+        private void DataGridViewCurrentCellDirtyStateChanged(Object Object, EventArgs EventArgs){
+            if(DataGridView.IsCurrentCellDirty)
+                DataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
 
-        private void ButtonBackClick(Object Object, EventArgs EventArgs){
-            Dashboard.Instance.UpdateAlbum(Album);
+        private void DataGridViewMouseWheel(Object Object, MouseEventArgs MouseEventArgs){
+            if(MouseEventArgs.Delta > 0){
+                if(DataGridView.FirstDisplayedScrollingRowIndex > 0)
+                    DataGridView.FirstDisplayedScrollingRowIndex--;
+                }
+            else if(MouseEventArgs.Delta < 0)
+                if(DataGridView.FirstDisplayedScrollingRowIndex < DataGridView.Rows.Count-1)
+                    DataGridView.FirstDisplayedScrollingRowIndex++;
             }
         #endregion
         }

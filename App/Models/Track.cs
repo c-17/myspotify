@@ -30,7 +30,7 @@ namespace MySpotify.Models{
             get{
                 TimeSpan TimeSpan = TimeSpan.FromMilliseconds(_Duration);
                 
-                return String.Format("{1:D2}m:{2:D2}s", TimeSpan.Hours, TimeSpan.Minutes, TimeSpan.Seconds, TimeSpan.Milliseconds);
+                return String.Format("{0:D2}:{1:D2}", TimeSpan.Minutes, TimeSpan.Seconds);
                 }
             }
         #endregion
