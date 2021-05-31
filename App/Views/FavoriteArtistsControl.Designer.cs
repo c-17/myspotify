@@ -1,7 +1,7 @@
 ﻿
 namespace MySpotify.Views
 {
-    partial class SearchControl
+    partial class FavoriteArtistsControl
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -30,13 +30,15 @@ namespace MySpotify.Views
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FavoriteArtistsControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,8 @@ namespace MySpotify.Views
             this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column2});
             this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridView.Location = new System.Drawing.Point(0, 0);
             this.DataGridView.MultiSelect = false;
@@ -67,8 +70,8 @@ namespace MySpotify.Views
             this.DataGridView.ShowCellErrors = false;
             this.DataGridView.ShowEditingIcon = false;
             this.DataGridView.ShowRowErrors = false;
-            this.DataGridView.Size = new System.Drawing.Size(782, 442);
-            this.DataGridView.TabIndex = 0;
+            this.DataGridView.Size = new System.Drawing.Size(670, 442);
+            this.DataGridView.TabIndex = 1;
             this.DataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewCellMouseDoubleClick);
             // 
             // Column1
@@ -86,6 +89,7 @@ namespace MySpotify.Views
             this.Column1.MinimumWidth = 50;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column1.Width = 50;
             // 
             // Column4
@@ -103,6 +107,7 @@ namespace MySpotify.Views
             this.Column4.MinimumWidth = 100;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Column5
             // 
@@ -118,18 +123,35 @@ namespace MySpotify.Views
             this.Column5.HeaderText = "";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // SearchControl
+            // Column2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(15);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Transparent;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "";
+            this.Column2.Image = global::MySpotify.Properties.Resources.ic_cancel;
+            this.Column2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column2.MinimumWidth = 50;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.Width = 50;
+            // 
+            // FavoriteArtistsControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.Controls.Add(this.DataGridView);
-            this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.White;
-            this.Name = "SearchControl";
-            this.Size = new System.Drawing.Size(782, 442);
+            this.Name = "FavoriteArtistsControl";
+            this.Size = new System.Drawing.Size(670, 442);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -141,5 +163,6 @@ namespace MySpotify.Views
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
     }
 }

@@ -31,3 +31,8 @@ C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpoti
 C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpotify.pdb
 C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpotify.csproj.CopyComplete
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\bin\Debug\Newtonsoft.Json.xml
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csprojAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.CopyComplete
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Components.MyMessageBox.resources
+C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.FavoriteArtistsControl.resources

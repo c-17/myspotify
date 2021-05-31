@@ -67,6 +67,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Components\CirclePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\Components\MyMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Components\MyMessageBox.Designer.cs">
+      <DependentUpon>MyMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Internet.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,6 +102,12 @@
     </Compile>
     <Compile Include="App\Views\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Views\FavoriteArtistsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\FavoriteArtistsControl.Designer.cs">
+      <DependentUpon>FavoriteArtistsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="App\Views\Login.cs">
       <SubType>Form</SubType>
@@ -121,6 +136,9 @@
     <Compile Include="App\Extensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="App\Components\MyMessageBox.resx">
+      <DependentUpon>MyMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\Views\AlbumControl.resx">
       <DependentUpon>AlbumControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\FavoriteArtistsControl.resx">
+      <DependentUpon>FavoriteArtistsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -191,6 +212,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MyLoading.gif" />
+    <None Include="Resources\ErrorIcon.png" />
+    <None Include="Resources\InformationIcon.png" />
+    <None Include="Resources\QuestionIcon.png" />
+    <None Include="Resources\SuccessIcon.png" />
+    <None Include="Resources\WarningIcon.png" />
+    <None Include="Resources\ic_question.png" />
+    <None Include="Resources\ic_play.png" />
+    <None Include="Resources\ic_no_play.png" />
+    <None Include="Resources\ic_favorite.png" />
+    <None Include="Resources\ic_no_favorite.png" />
+    <None Include="Resources\ic_success.png" />
+    <None Include="Resources\ic_warning.png" />
+    <None Include="Resources\ic_information.png" />
+    <None Include="Resources\ic_cancel.png" />
+    <None Include="Resources\ic_close.png" />
+    <None Include="Resources\ic_maximize.png" />
+    <None Include="Resources\ic_minimize.png" />
+    <None Include="Resources\ic_user.png" />
     <Content Include="Spotify.ico" />
   </ItemGroup>
   <ItemGroup>

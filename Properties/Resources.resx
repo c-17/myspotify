@@ -145,4 +145,43 @@
   <data name="MyLoading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MyLoading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_favorite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_favorite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_no_favorite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_no_favorite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_no_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_no_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_success" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_success.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_maximize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

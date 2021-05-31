@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 using MySpotify.Models;
-using System.Reflection;
+using MySpotify.Components;
 
 namespace MySpotify.Views{
     internal partial class ArtistControl : UserControl{
@@ -27,7 +28,7 @@ namespace MySpotify.Views{
 
             Dock = DockStyle.Fill;
 
-            PanelBackground2.BackColor = Color.FromArgb(75, 24, 202, 88);
+            PanelBackground2.BackColor = Color.FromArgb(75, 33, 33, 33);
 
             ParentChanged += new EventHandler(ArtistControlParentChanged);
 
@@ -39,13 +40,17 @@ namespace MySpotify.Views{
         internal ArtistControl UpdateArtist(Artist Artist, Album Album = null){
             this.Artist = Artist;
 
-            ButtonBack.Visible = (Album != null);
+            //ButtonBack.Visible = (Album != null);
+
+            PictureBoxArtist.BackgroundImage = Artist.Thumbnail;
 
             LabelName.Text = Artist.Name;
 
             LabelCountryGenre.Text = Artist.Genre+", "+Artist.Country;
 
-            PanelBackground.BackgroundImage = Artist.Thumbnail;
+            LabelBiography.Text = Artist.Biography;
+
+            ButtonAddToFavorites.BackgroundImage = (User.Instance.Artists.Contains(Artist)?Properties.Resources.ic_favorite:Properties.Resources.ic_no_favorite);
 
             DataGridView.Rows.Clear();
             
@@ -68,10 +73,12 @@ namespace MySpotify.Views{
                 new Thread(new ThreadStart(delegate{
                     Artist.Albums = Internet.SearchAlbums(Artist).Result;
 
-                    foreach(Album A1bum in Artist.Albums){
-                        DataGridView.Rows.Add(new Object[]{A1bum.Thumbnail, A1bum.Name});
+                    if(Artist.Albums != null){
+                        foreach(Album A1bum in Artist.Albums){
+                            DataGridView.Rows.Add(new Object[]{A1bum.Thumbnail, A1bum.Name});
 
-                        DataGridView.Rows[DataGridView.Rows.Count-1].Tag = A1bum;
+                            DataGridView.Rows[DataGridView.Rows.Count-1].Tag = A1bum;
+                            }
                         }
                     
                     PanelControls.Controls.Clear();
@@ -92,8 +99,27 @@ namespace MySpotify.Views{
                 ActiveControl = DataGridView;*/
             }
 
+        private void TableLayoutPanelArtistPaint(object sender, PaintEventArgs e){
+            Graphics Graphics = e.Graphics;
+
+            Rectangle Rectangle = new Rectangle(0, 0, TableLayoutPanelArtist.Width, TableLayoutPanelArtist.Height);
+
+            Brush Brush = new LinearGradientBrush(Rectangle, Color.FromArgb(22, 22, 22), Color.FromArgb(33, 33, 33), LinearGradientMode.Vertical);  
+
+            Graphics.FillRectangle(Brush, Rectangle);
+            }
+
         private void ButtonBackClick(Object Object, EventArgs EventArgs){
             Dashboard.Instance.UpdateAlbum(Album);
+            }
+
+        private void ButtonAddToFavoritesClick(Object Object, EventArgs EventArgs){
+            if(User.Instance.Artists.Contains(Artist))
+                User.Instance.Artists.Remove(Artist);
+            else
+                User.Instance.Artists.Add(Artist);
+            
+            ButtonAddToFavorites.BackgroundImage = (User.Instance.Artists.Contains(Artist)?Properties.Resources.ic_favorite:Properties.Resources.ic_no_favorite);
             }
 
         private void DataGridViewCellMouseDoubleClick(Object Object, DataGridViewCellMouseEventArgs DataGridViewCellMouseEventArgs){

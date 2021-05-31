@@ -18,6 +18,8 @@ namespace MySpotify.Models{
         internal readonly List<Album> Albums = new List<Album>();
 
         internal readonly List<Track> Tracks = new List<Track>();
+
+        internal static User Instance;
         #endregion
         
         #region CONSTRUCTORS
@@ -27,6 +29,8 @@ namespace MySpotify.Models{
             this.Name = Name;
 
             this.Password = Password;
+
+            Instance = this;
             }
         #endregion
         }

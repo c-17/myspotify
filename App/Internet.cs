@@ -88,9 +88,11 @@ namespace MySpotify.Models{
 
         internal static Artist GetRandomArtist(){
             try{
-                Int32 ArtistId = new Random().Next(111233, 112500)+1;
-
-                String Response = Get(WebService+"artist.php?i="+ArtistId).Result;
+                //Int32 ArtistId = new Random().Next(111233, 112500)+1;
+                
+                //String Response = Get(WebService+"artist.php?i="+ArtistId).Result;
+                String Response = Get(WebService+"artist.php?i=112435").Result;
+                
                 
                 Console.WriteLine("GetRandomArtist: "+Response);
 

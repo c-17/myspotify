@@ -11,13 +11,13 @@ using System.Windows.Forms;
 using MySpotify.Models;
 
 namespace MySpotify.Views{
-    internal partial class SearchControl : UserControl{
-        
+    internal partial class FavoriteArtistsControl : UserControl{
         #region PROPERTIES
         #endregion
         
         #region CONSTRUCTORS
-        internal SearchControl(){
+
+        internal FavoriteArtistsControl(){
             InitializeComponent();
 
             Dock = DockStyle.Fill;
@@ -25,10 +25,10 @@ namespace MySpotify.Views{
         #endregion
         
         #region FUNCTIONS
-        internal SearchControl UpdateArtists(List<Artist> Artists){
+        internal FavoriteArtistsControl UpdateArtists(){
             DataGridView.Rows.Clear();
 
-            foreach(Artist Artist in Artists){
+            foreach(Artist Artist in User.Instance.Artists){
                 DataGridView.Rows.Add(new Object[]{Artist.Thumbnail, Artist.Name, Artist.Biography});
 
                 DataGridView.Rows[DataGridView.Rows.Count-1].Tag = Artist;

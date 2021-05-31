@@ -29,29 +29,30 @@ namespace MySpotify.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelBackground = new System.Windows.Forms.Panel();
             this.PanelBackground2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.LabelCountryGenre = new System.Windows.Forms.Label();
-            this.ButtonPlay = new System.Windows.Forms.Button();
-            this.ButtonFollow = new System.Windows.Forms.Button();
-            this.LabelName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ButtonBack = new System.Windows.Forms.Button();
+            this.TableLayoutPanelAll = new System.Windows.Forms.TableLayoutPanel();
             this.PanelControls = new System.Windows.Forms.Panel();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableLayoutPanelArtist = new System.Windows.Forms.TableLayoutPanel();
+            this.PictureBoxArtist = new System.Windows.Forms.PictureBox();
+            this.LabelArtist = new System.Windows.Forms.Label();
+            this.LabelName = new System.Windows.Forms.Label();
+            this.LabelCountryGenre = new System.Windows.Forms.Label();
+            this.LabelBiography = new System.Windows.Forms.Label();
+            this.ButtonAddToFavorites = new System.Windows.Forms.Button();
             this.PanelBackground.SuspendLayout();
             this.PanelBackground2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.TableLayoutPanelAll.SuspendLayout();
             this.PanelControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            this.TableLayoutPanelArtist.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxArtist)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelBackground
@@ -67,7 +68,7 @@ namespace MySpotify.Views
             // 
             // PanelBackground2
             // 
-            this.PanelBackground2.Controls.Add(this.tableLayoutPanel1);
+            this.PanelBackground2.Controls.Add(this.TableLayoutPanelAll);
             this.PanelBackground2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelBackground2.Location = new System.Drawing.Point(0, 0);
             this.PanelBackground2.Margin = new System.Windows.Forms.Padding(0);
@@ -75,151 +76,31 @@ namespace MySpotify.Views
             this.PanelBackground2.Size = new System.Drawing.Size(670, 442);
             this.PanelBackground2.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // TableLayoutPanelAll
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.ButtonBack, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.PanelControls, 0, 8);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 442);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel2.Controls.Add(this.LabelCountryGenre, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.ButtonPlay, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.ButtonFollow, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.LabelName, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 152);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 3);
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(670, 64);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // LabelCountryGenre
-            // 
-            this.LabelCountryGenre.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.LabelCountryGenre, 2);
-            this.LabelCountryGenre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelCountryGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCountryGenre.Location = new System.Drawing.Point(3, 42);
-            this.LabelCountryGenre.Name = "LabelCountryGenre";
-            this.LabelCountryGenre.Size = new System.Drawing.Size(414, 22);
-            this.LabelCountryGenre.TabIndex = 2;
-            this.LabelCountryGenre.Text = "Country";
-            // 
-            // ButtonPlay
-            // 
-            this.ButtonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.ButtonPlay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonPlay.FlatAppearance.BorderSize = 0;
-            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.ButtonPlay.Location = new System.Drawing.Point(420, 42);
-            this.ButtonPlay.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonPlay.Name = "ButtonPlay";
-            this.ButtonPlay.Size = new System.Drawing.Size(125, 22);
-            this.ButtonPlay.TabIndex = 0;
-            this.ButtonPlay.Text = "Play";
-            this.ButtonPlay.UseVisualStyleBackColor = false;
-            // 
-            // ButtonFollow
-            // 
-            this.ButtonFollow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.ButtonFollow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonFollow.FlatAppearance.BorderSize = 0;
-            this.ButtonFollow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonFollow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.ButtonFollow.Location = new System.Drawing.Point(545, 42);
-            this.ButtonFollow.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonFollow.Name = "ButtonFollow";
-            this.ButtonFollow.Size = new System.Drawing.Size(125, 22);
-            this.ButtonFollow.TabIndex = 1;
-            this.ButtonFollow.Text = "Add to Fav";
-            this.ButtonFollow.UseVisualStyleBackColor = false;
-            // 
-            // LabelName
-            // 
-            this.LabelName.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.LabelName, 4);
-            this.LabelName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.LabelName.Location = new System.Drawing.Point(0, 0);
-            this.LabelName.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.LabelName.Name = "LabelName";
-            this.tableLayoutPanel2.SetRowSpan(this.LabelName, 2);
-            this.LabelName.Size = new System.Drawing.Size(667, 42);
-            this.LabelName.TabIndex = 1;
-            this.LabelName.Text = "Name";
-            this.LabelName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 128);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(664, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Artist";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // ButtonBack
-            // 
-            this.ButtonBack.BackgroundImage = global::MySpotify.Properties.Resources.ic_navigate_next;
-            this.ButtonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonBack.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ButtonBack.FlatAppearance.BorderSize = 0;
-            this.ButtonBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ButtonBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ButtonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonBack.Location = new System.Drawing.Point(638, 0);
-            this.ButtonBack.Margin = new System.Windows.Forms.Padding(0);
-            this.ButtonBack.Name = "ButtonBack";
-            this.ButtonBack.Size = new System.Drawing.Size(32, 32);
-            this.ButtonBack.TabIndex = 4;
-            this.ButtonBack.UseVisualStyleBackColor = true;
-            this.ButtonBack.Click += new System.EventHandler(this.ButtonBackClick);
+            this.TableLayoutPanelAll.BackColor = System.Drawing.Color.Transparent;
+            this.TableLayoutPanelAll.ColumnCount = 1;
+            this.TableLayoutPanelAll.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelAll.Controls.Add(this.PanelControls, 0, 1);
+            this.TableLayoutPanelAll.Controls.Add(this.TableLayoutPanelArtist, 0, 0);
+            this.TableLayoutPanelAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelAll.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanelAll.Margin = new System.Windows.Forms.Padding(0);
+            this.TableLayoutPanelAll.Name = "TableLayoutPanelAll";
+            this.TableLayoutPanelAll.RowCount = 2;
+            this.TableLayoutPanelAll.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.TableLayoutPanelAll.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelAll.Size = new System.Drawing.Size(670, 442);
+            this.TableLayoutPanelAll.TabIndex = 0;
             // 
             // PanelControls
             // 
             this.PanelControls.Controls.Add(this.DataGridView);
             this.PanelControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelControls.Location = new System.Drawing.Point(0, 216);
-            this.PanelControls.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelControls.Location = new System.Drawing.Point(5, 180);
+            this.PanelControls.Margin = new System.Windows.Forms.Padding(5);
             this.PanelControls.Name = "PanelControls";
-            this.PanelControls.Size = new System.Drawing.Size(670, 226);
+            this.PanelControls.Size = new System.Drawing.Size(660, 257);
             this.PanelControls.TabIndex = 5;
             // 
             // DataGridView
@@ -238,7 +119,7 @@ namespace MySpotify.Views
             this.Column2});
             this.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridView.Location = new System.Drawing.Point(0, 0);
-            this.DataGridView.Margin = new System.Windows.Forms.Padding(0);
+            this.DataGridView.Margin = new System.Windows.Forms.Padding(5);
             this.DataGridView.MultiSelect = false;
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
@@ -250,21 +131,21 @@ namespace MySpotify.Views
             this.DataGridView.ShowCellErrors = false;
             this.DataGridView.ShowEditingIcon = false;
             this.DataGridView.ShowRowErrors = false;
-            this.DataGridView.Size = new System.Drawing.Size(670, 226);
+            this.DataGridView.Size = new System.Drawing.Size(660, 257);
             this.DataGridView.TabIndex = 3;
             this.DataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewCellMouseDoubleClick);
             this.DataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.DataGridViewCurrentCellDirtyStateChanged);
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle1.NullValue")));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "";
             this.Column1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
@@ -277,17 +158,130 @@ namespace MySpotify.Views
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column2.HeaderText = "";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // TableLayoutPanelArtist
+            // 
+            this.TableLayoutPanelArtist.ColumnCount = 3;
+            this.TableLayoutPanelArtist.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.TableLayoutPanelArtist.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelArtist.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.TableLayoutPanelArtist.Controls.Add(this.PictureBoxArtist, 0, 0);
+            this.TableLayoutPanelArtist.Controls.Add(this.LabelArtist, 1, 0);
+            this.TableLayoutPanelArtist.Controls.Add(this.LabelName, 1, 1);
+            this.TableLayoutPanelArtist.Controls.Add(this.LabelCountryGenre, 1, 3);
+            this.TableLayoutPanelArtist.Controls.Add(this.LabelBiography, 1, 4);
+            this.TableLayoutPanelArtist.Controls.Add(this.ButtonAddToFavorites, 2, 0);
+            this.TableLayoutPanelArtist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelArtist.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanelArtist.Margin = new System.Windows.Forms.Padding(0);
+            this.TableLayoutPanelArtist.Name = "TableLayoutPanelArtist";
+            this.TableLayoutPanelArtist.RowCount = 7;
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.TableLayoutPanelArtist.Size = new System.Drawing.Size(670, 175);
+            this.TableLayoutPanelArtist.TabIndex = 6;
+            this.TableLayoutPanelArtist.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanelArtistPaint);
+            // 
+            // PictureBoxArtist
+            // 
+            this.PictureBoxArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBoxArtist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBoxArtist.Location = new System.Drawing.Point(5, 5);
+            this.PictureBoxArtist.Margin = new System.Windows.Forms.Padding(5);
+            this.PictureBoxArtist.Name = "PictureBoxArtist";
+            this.TableLayoutPanelArtist.SetRowSpan(this.PictureBoxArtist, 7);
+            this.PictureBoxArtist.Size = new System.Drawing.Size(165, 165);
+            this.PictureBoxArtist.TabIndex = 0;
+            this.PictureBoxArtist.TabStop = false;
+            // 
+            // LabelArtist
+            // 
+            this.LabelArtist.AutoSize = true;
+            this.LabelArtist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelArtist.Location = new System.Drawing.Point(178, 0);
+            this.LabelArtist.Name = "LabelArtist";
+            this.LabelArtist.Size = new System.Drawing.Size(465, 24);
+            this.LabelArtist.TabIndex = 0;
+            this.LabelArtist.Text = "Artist";
+            this.LabelArtist.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // LabelName
+            // 
+            this.LabelName.AutoSize = true;
+            this.TableLayoutPanelArtist.SetColumnSpan(this.LabelName, 2);
+            this.LabelName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.LabelName.Location = new System.Drawing.Point(175, 24);
+            this.LabelName.Margin = new System.Windows.Forms.Padding(0);
+            this.LabelName.Name = "LabelName";
+            this.TableLayoutPanelArtist.SetRowSpan(this.LabelName, 2);
+            this.LabelName.Size = new System.Drawing.Size(495, 50);
+            this.LabelName.TabIndex = 1;
+            this.LabelName.Text = "Name";
+            this.LabelName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // LabelCountryGenre
+            // 
+            this.LabelCountryGenre.AutoSize = true;
+            this.TableLayoutPanelArtist.SetColumnSpan(this.LabelCountryGenre, 2);
+            this.LabelCountryGenre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelCountryGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCountryGenre.Location = new System.Drawing.Point(178, 74);
+            this.LabelCountryGenre.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.LabelCountryGenre.Name = "LabelCountryGenre";
+            this.LabelCountryGenre.Size = new System.Drawing.Size(492, 25);
+            this.LabelCountryGenre.TabIndex = 2;
+            this.LabelCountryGenre.Text = "Country";
+            // 
+            // LabelBiography
+            // 
+            this.LabelBiography.AutoSize = true;
+            this.TableLayoutPanelArtist.SetColumnSpan(this.LabelBiography, 2);
+            this.LabelBiography.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelBiography.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic);
+            this.LabelBiography.Location = new System.Drawing.Point(178, 99);
+            this.LabelBiography.Name = "LabelBiography";
+            this.TableLayoutPanelArtist.SetRowSpan(this.LabelBiography, 3);
+            this.LabelBiography.Size = new System.Drawing.Size(489, 76);
+            this.LabelBiography.TabIndex = 3;
+            this.LabelBiography.Text = "Biography";
+            // 
+            // ButtonAddToFavorites
+            // 
+            this.ButtonAddToFavorites.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonAddToFavorites.BackgroundImage = global::MySpotify.Properties.Resources.ic_no_favorite;
+            this.ButtonAddToFavorites.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonAddToFavorites.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonAddToFavorites.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonAddToFavorites.FlatAppearance.BorderSize = 0;
+            this.ButtonAddToFavorites.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ButtonAddToFavorites.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ButtonAddToFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonAddToFavorites.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.ButtonAddToFavorites.ForeColor = System.Drawing.Color.Transparent;
+            this.ButtonAddToFavorites.Location = new System.Drawing.Point(649, 3);
+            this.ButtonAddToFavorites.Name = "ButtonAddToFavorites";
+            this.ButtonAddToFavorites.Size = new System.Drawing.Size(18, 18);
+            this.ButtonAddToFavorites.TabIndex = 1;
+            this.ButtonAddToFavorites.UseVisualStyleBackColor = false;
+            this.ButtonAddToFavorites.Click += new System.EventHandler(this.ButtonAddToFavoritesClick);
             // 
             // ArtistControl
             // 
@@ -301,12 +295,12 @@ namespace MySpotify.Views
             this.Size = new System.Drawing.Size(670, 442);
             this.PanelBackground.ResumeLayout(false);
             this.PanelBackground2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.TableLayoutPanelAll.ResumeLayout(false);
             this.PanelControls.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            this.TableLayoutPanelArtist.ResumeLayout(false);
+            this.TableLayoutPanelArtist.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxArtist)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,18 +308,18 @@ namespace MySpotify.Views
         #endregion
 
         private System.Windows.Forms.Panel PanelBackground;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutPanelAll;
+        private System.Windows.Forms.Label LabelArtist;
         private System.Windows.Forms.Label LabelName;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button ButtonPlay;
-        private System.Windows.Forms.Button ButtonFollow;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Panel PanelBackground2;
-        private System.Windows.Forms.Label LabelCountryGenre;
-        private System.Windows.Forms.Button ButtonBack;
         private System.Windows.Forms.Panel PanelControls;
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Label LabelCountryGenre;
+        private System.Windows.Forms.Button ButtonAddToFavorites;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutPanelArtist;
+        private System.Windows.Forms.PictureBox PictureBoxArtist;
+        private System.Windows.Forms.Label LabelBiography;
     }
 }
