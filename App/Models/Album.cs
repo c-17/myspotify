@@ -19,6 +19,7 @@ namespace MySpotify.Models{
         internal readonly String Name;
         internal readonly String Genre;
         internal readonly String Released;
+        internal readonly String Description;
         internal readonly String URLThumbnail;
         internal Image Thumbnail;
 
@@ -26,16 +27,18 @@ namespace MySpotify.Models{
         #endregion
         
         #region CONSTRUCTORS
-        internal Album(Artist Artist, Int64 Id, String Name, String Genre, String URLThumbnail, String Released){
+        internal Album(Artist Artist, Int64 Id, String Name, String Genre, String Released, String Description, String URLThumbnail){
             this.Artist = Artist;
 
             this.Name = Name;
 
             this.Genre = Genre;
 
-            this.URLThumbnail = URLThumbnail;
-
             this.Released = Released;
+
+            this.Description = Description;
+
+            this.URLThumbnail = URLThumbnail;
             }
         
         internal Album(Artist Artist, DataRow DataRow){
@@ -48,6 +51,8 @@ namespace MySpotify.Models{
             this.Genre = Convert.ToString(DataRow["strGenre"]);
             
             this.Released = Convert.ToString(DataRow["intYearReleased"]);
+
+            this.Description = Convert.ToString(DataRow["strDescriptionEN"]);
 
             this.URLThumbnail = Convert.ToString(DataRow["strAlbumThumb"]);
             }

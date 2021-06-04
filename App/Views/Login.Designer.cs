@@ -59,7 +59,7 @@ namespace MySpotify.Views
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.50135F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.49864F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(231, 369);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(234, 362);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -72,7 +72,7 @@ namespace MySpotify.Views
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 130);
+            this.pictureBox1.Size = new System.Drawing.Size(234, 128);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -85,13 +85,13 @@ namespace MySpotify.Views
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 130);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 128);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(231, 239);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(234, 234);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel1
@@ -108,7 +108,7 @@ namespace MySpotify.Views
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel2.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(231, 239);
+            this.panel1.Size = new System.Drawing.Size(234, 234);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -180,11 +180,14 @@ namespace MySpotify.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(231, 369);
+            this.ClientSize = new System.Drawing.Size(234, 362);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(250, 400);
+            this.MinimumSize = new System.Drawing.Size(250, 400);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Spotify";

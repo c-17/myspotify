@@ -20,26 +20,21 @@ using MySpotify.Models;
 
 namespace MySpotify.Views{
     internal partial class Dashboard : Form{
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        private static extern bool ReleaseCapture();
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(Int32 nLeftRect, Int32 nTopRect, Int32 nRightRect, Int32 nBottomRect, Int32 nWidthEllipse, Int32 nHeightEllipse);
 
         #region PROPERTIES
         internal readonly WaitingControl WaitingControl = new WaitingControl();
         
-        private readonly ArtistControl ArtistControl = new ArtistControl();
+        private readonly ArtistControl ArtistControl;
         
-        private readonly AlbumControl AlbumControl = new AlbumControl();
+        private readonly AlbumControl AlbumControl;
 
         private readonly SearchControl SearchControl = new SearchControl();
 
         private readonly FavoriteArtistsControl FavoriteArtistsControl = new FavoriteArtistsControl();
+
+        private readonly FavoriteAlbumsControl FavoriteAlbumsControl = new FavoriteAlbumsControl();
 
         internal static Dashboard Instance;
         #endregion
@@ -47,18 +42,39 @@ namespace MySpotify.Views{
         #region CONSTRUCTORS
         internal Dashboard(){
             InitializeComponent();
+            
+            ArtistControl = new ArtistControl(ButtonNext);
+        
+            AlbumControl = new AlbumControl(ButtonBack);
 
             Instance = this;
 
             PanelUser.Controls.Add(new CirclePictureBox(Properties.Resources.ic_user));
 
             TextBoxSearcher.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, TextBoxSearcher.Width, TextBoxSearcher.Height, 5, 5));
+            
+            ButtonBack.GotFocus += new EventHandler(RemoveFocus);
+            ButtonNext.GotFocus += new EventHandler(RemoveFocus);
+
+            ButtonExplore.GotFocus += new EventHandler(RemoveFocus);
+
+            ButtonFavoriteArtists.GotFocus += new EventHandler(RemoveFocus);
+            ButtonFavoriteAlbums.GotFocus += new EventHandler(RemoveFocus);
+            ButtonFavoriteSongs.GotFocus += new EventHandler(RemoveFocus);
             }
         #endregion
         
         #region FUNCTIONS
-        internal Dashboard UpdateArtist(Artist Artist, Album Album = null){
+        internal Dashboard Init(){
             LabelUser.Text = Program.User.Name;
+            
+            return this;
+            }
+
+        internal Dashboard UpdateArtist(Artist Artist, Album Album = null){
+            ButtonBack.BackgroundImage = Properties.Resources.ic_back_gray;
+
+            ButtonBack.Enabled = false;
 
             PanelControls.Controls.Clear();
 
@@ -68,6 +84,10 @@ namespace MySpotify.Views{
             }
 
         internal Dashboard UpdateAlbum(Album Album){
+            ButtonNext.BackgroundImage = Properties.Resources.ic_next_gray;
+
+            ButtonNext.Enabled = false;
+
             PanelControls.Controls.Clear();
             
             PanelControls.Controls.Add(AlbumControl.UpdateAlbum(Album));
@@ -76,36 +96,51 @@ namespace MySpotify.Views{
             }
 
         internal Dashboard UpdateFavorteArtists(){
+            ButtonBack.BackgroundImage = Properties.Resources.ic_back_gray;
+
+            ButtonNext.BackgroundImage = Properties.Resources.ic_next_gray;
+
+            ButtonBack.Enabled = ButtonNext.Enabled = false;
+
             PanelControls.Controls.Clear();
             
             PanelControls.Controls.Add(FavoriteArtistsControl.UpdateArtists());
 
             return this;
             }
+
+        internal Dashboard UpdateFavorteAlbums(){
+            ButtonBack.BackgroundImage = Properties.Resources.ic_back_gray;
+
+            ButtonNext.BackgroundImage = Properties.Resources.ic_next_gray;
+
+            ButtonBack.Enabled = ButtonNext.Enabled = false;
+
+            PanelControls.Controls.Clear();
+            
+            PanelControls.Controls.Add(FavoriteAlbumsControl.UpdateAlbums());
+
+            return this;
+            }
+        
+        internal Dashboard UpdateFavorteSongs(){
+            ButtonBack.BackgroundImage = Properties.Resources.ic_back_gray;
+
+            ButtonNext.BackgroundImage = Properties.Resources.ic_next_gray;
+
+            ButtonBack.Enabled = ButtonNext.Enabled = false;
+
+            PanelControls.Controls.Clear();
+            
+            PanelControls.Controls.Add(FavoriteAlbumsControl.UpdateAlbums());
+
+            return this;
+            }
+        
         #endregion
         
         #region EVENTS
-        private void LabelMySpotifyMouseDown(Object Object, MouseEventArgs MouseEventArgs){
-            if(MouseEventArgs.Button == MouseButtons.Left){
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-                }
-            }
-
-        private void ButtonMinimizeClick(Object Object, EventArgs EventArgs) => WindowState = FormWindowState.Minimized;
-
-        private void ButtonMaximizeClick(Object Object, EventArgs EventArgs) => WindowState = ((WindowState != FormWindowState.Maximized)?FormWindowState.Maximized:FormWindowState.Normal);
-        
-        /*private void ButtonMaximizeClick(Object Object, EventArgs EventArgs){
-            if(WindowState == FormWindowState.Maximized)
-                WindowState = FormWindowState.Normal;
-            else{
-                WindowState = FormWindowState.Maximized;
-                Bounds = Screen.PrimaryScreen.WorkingArea;
-                }
-            }*/
-
-        private void ButtonCloseClick(Object Object, EventArgs EventArgs) => Application.Exit();
+        private void RemoveFocus(Object Object, EventArgs EventArgs) => LabelMySpotify.Focus();
 
         private async void TextBoxSearcherKeyUp(Object Object, KeyEventArgs KeyEventArgs){
             PanelControls.Controls.Clear();
@@ -127,6 +162,8 @@ namespace MySpotify.Views{
             }
 
         private void ButtonExploreClick(Object Object, EventArgs EventArgs){
+            TextBoxSearcher.Text = String.Empty;
+
             PanelControls.Controls.Clear();
             
             PanelControls.Controls.Add(WaitingControl);
@@ -146,23 +183,10 @@ namespace MySpotify.Views{
             }
         
         private void ButtonFavoriteArtistsClick(Object Object, EventArgs EventArgs) => UpdateFavorteArtists();
+
+        private void ButtonFavoriteAlbumsClick(Object Object, EventArgs EventArgs) => UpdateFavorteAlbums();
+        
+        private void ButtonFavoriteSongsClick(Object Object, EventArgs EventArgs) => UpdateFavorteSongs();
         #endregion
-        private void Dashboard_ResizeEnd(object sender, EventArgs e)
-        {
         }
-
-        private void Dashboard_MaximizedBoundsChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Dashboard_SizeChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Dashboard_Resize(object sender, EventArgs e)
-        {
-        }
-    }
     }

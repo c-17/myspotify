@@ -43,7 +43,7 @@ namespace MySpotify{
 
             Artist = SplashScreen.Artist;
 
-            while(Login.ShowDialog() == DialogResult.OK && (User = Login.User) != null && Dashboard.UpdateArtist(Artist).ShowDialog() != DialogResult.Cancel);
+            while(Login.ShowDialog() == DialogResult.OK && (User = Login.User) != null && Dashboard.Init().UpdateArtist(Artist).ShowDialog() != DialogResult.Cancel);
 
             //Application.Run(new Login());
             }

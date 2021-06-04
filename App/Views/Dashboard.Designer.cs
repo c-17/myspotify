@@ -33,22 +33,21 @@ namespace MySpotify.Views
             this.TableLayoutPanelAll = new System.Windows.Forms.TableLayoutPanel();
             this.PanelControls = new System.Windows.Forms.Panel();
             this.TableLayoutPanelControls = new System.Windows.Forms.TableLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ButtonFavoriteSongs = new System.Windows.Forms.Button();
+            this.ButtonFavoriteAlbums = new System.Windows.Forms.Button();
             this.ButtonFavoriteArtists = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TextBoxSearcher = new System.Windows.Forms.TextBox();
             this.TableLayoutPanelBack = new System.Windows.Forms.TableLayoutPanel();
             this.LabelMySpotify = new System.Windows.Forms.Label();
+            this.ButtonBack = new System.Windows.Forms.Button();
+            this.ButtonNext = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonExplore = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ButtonCloseSession = new System.Windows.Forms.Button();
             this.TableLayoutPanelUser = new System.Windows.Forms.TableLayoutPanel();
             this.LabelUser = new System.Windows.Forms.Label();
             this.PanelUser = new System.Windows.Forms.Panel();
-            this.ButtonClose = new System.Windows.Forms.Button();
-            this.ButtonMaximize = new System.Windows.Forms.Button();
-            this.ButtonMnimize = new System.Windows.Forms.Button();
             this.TableLayoutPanelAll.SuspendLayout();
             this.TableLayoutPanelControls.SuspendLayout();
             this.TableLayoutPanelBack.SuspendLayout();
@@ -85,15 +84,15 @@ namespace MySpotify.Views
             // 
             this.TableLayoutPanelControls.ColumnCount = 1;
             this.TableLayoutPanelControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelControls.Controls.Add(this.button6, 0, 7);
-            this.TableLayoutPanelControls.Controls.Add(this.button5, 0, 6);
+            this.TableLayoutPanelControls.Controls.Add(this.ButtonFavoriteSongs, 0, 7);
+            this.TableLayoutPanelControls.Controls.Add(this.ButtonFavoriteAlbums, 0, 6);
             this.TableLayoutPanelControls.Controls.Add(this.ButtonFavoriteArtists, 0, 5);
             this.TableLayoutPanelControls.Controls.Add(this.label3, 0, 4);
             this.TableLayoutPanelControls.Controls.Add(this.TextBoxSearcher, 0, 1);
             this.TableLayoutPanelControls.Controls.Add(this.TableLayoutPanelBack, 0, 0);
             this.TableLayoutPanelControls.Controls.Add(this.label1, 0, 2);
             this.TableLayoutPanelControls.Controls.Add(this.ButtonExplore, 0, 3);
-            this.TableLayoutPanelControls.Controls.Add(this.button3, 0, 13);
+            this.TableLayoutPanelControls.Controls.Add(this.ButtonCloseSession, 0, 13);
             this.TableLayoutPanelControls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelControls.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanelControls.Margin = new System.Windows.Forms.Padding(0);
@@ -117,41 +116,44 @@ namespace MySpotify.Views
             this.TableLayoutPanelControls.Size = new System.Drawing.Size(175, 442);
             this.TableLayoutPanelControls.TabIndex = 1;
             // 
-            // button6
+            // ButtonFavoriteSongs
             // 
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(2, 226);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(171, 28);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Songs";
-            this.button6.UseVisualStyleBackColor = true;
+            this.ButtonFavoriteSongs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonFavoriteSongs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonFavoriteSongs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonFavoriteSongs.FlatAppearance.BorderSize = 0;
+            this.ButtonFavoriteSongs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonFavoriteSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.ButtonFavoriteSongs.ForeColor = System.Drawing.Color.White;
+            this.ButtonFavoriteSongs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonFavoriteSongs.Location = new System.Drawing.Point(2, 226);
+            this.ButtonFavoriteSongs.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonFavoriteSongs.Name = "ButtonFavoriteSongs";
+            this.ButtonFavoriteSongs.Size = new System.Drawing.Size(171, 28);
+            this.ButtonFavoriteSongs.TabIndex = 7;
+            this.ButtonFavoriteSongs.Text = "Songs";
+            this.ButtonFavoriteSongs.UseVisualStyleBackColor = true;
+            this.ButtonFavoriteSongs.Visible = false;
+            this.ButtonFavoriteSongs.Click += new System.EventHandler(this.ButtonFavoriteSongsClick);
             // 
-            // button5
+            // ButtonFavoriteAlbums
             // 
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(2, 194);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(171, 28);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Albums";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ButtonFavoriteAlbums.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonFavoriteAlbums.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonFavoriteAlbums.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonFavoriteAlbums.FlatAppearance.BorderSize = 0;
+            this.ButtonFavoriteAlbums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonFavoriteAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.ButtonFavoriteAlbums.ForeColor = System.Drawing.Color.White;
+            this.ButtonFavoriteAlbums.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonFavoriteAlbums.Location = new System.Drawing.Point(2, 194);
+            this.ButtonFavoriteAlbums.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonFavoriteAlbums.Name = "ButtonFavoriteAlbums";
+            this.ButtonFavoriteAlbums.Size = new System.Drawing.Size(171, 28);
+            this.ButtonFavoriteAlbums.TabIndex = 6;
+            this.ButtonFavoriteAlbums.Text = "Albums";
+            this.ButtonFavoriteAlbums.UseVisualStyleBackColor = true;
+            this.ButtonFavoriteAlbums.Click += new System.EventHandler(this.ButtonFavoriteAlbumsClick);
             // 
             // ButtonFavoriteArtists
             // 
@@ -198,12 +200,14 @@ namespace MySpotify.Views
             // 
             // TableLayoutPanelBack
             // 
-            this.TableLayoutPanelBack.ColumnCount = 2;
+            this.TableLayoutPanelBack.ColumnCount = 4;
             this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.TableLayoutPanelBack.Controls.Add(this.LabelMySpotify, 0, 0);
+            this.TableLayoutPanelBack.Controls.Add(this.ButtonBack, 2, 0);
+            this.TableLayoutPanelBack.Controls.Add(this.ButtonNext, 3, 0);
             this.TableLayoutPanelBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelBack.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanelBack.Margin = new System.Windows.Forms.Padding(0);
@@ -227,7 +231,42 @@ namespace MySpotify.Views
             this.LabelMySpotify.TabIndex = 2;
             this.LabelMySpotify.Text = "My Spotify";
             this.LabelMySpotify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LabelMySpotify.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelMySpotifyMouseDown);
+            // 
+            // ButtonBack
+            // 
+            this.ButtonBack.BackgroundImage = global::MySpotify.Properties.Resources.ic_back_gray;
+            this.ButtonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonBack.Enabled = false;
+            this.ButtonBack.FlatAppearance.BorderSize = 0;
+            this.ButtonBack.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.ButtonBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ButtonBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ButtonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonBack.Location = new System.Drawing.Point(114, 3);
+            this.ButtonBack.Name = "ButtonBack";
+            this.ButtonBack.Size = new System.Drawing.Size(26, 26);
+            this.ButtonBack.TabIndex = 3;
+            this.ButtonBack.UseVisualStyleBackColor = true;
+            // 
+            // ButtonNext
+            // 
+            this.ButtonNext.BackgroundImage = global::MySpotify.Properties.Resources.ic_next_gray;
+            this.ButtonNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonNext.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonNext.Enabled = false;
+            this.ButtonNext.FlatAppearance.BorderSize = 0;
+            this.ButtonNext.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.ButtonNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ButtonNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ButtonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonNext.Location = new System.Drawing.Point(146, 3);
+            this.ButtonNext.Name = "ButtonNext";
+            this.ButtonNext.Size = new System.Drawing.Size(26, 26);
+            this.ButtonNext.TabIndex = 4;
+            this.ButtonNext.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -261,39 +300,33 @@ namespace MySpotify.Views
             this.ButtonExplore.UseVisualStyleBackColor = true;
             this.ButtonExplore.Click += new System.EventHandler(this.ButtonExploreClick);
             // 
-            // button3
+            // ButtonCloseSession
             // 
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(2, 412);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 28);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Close Session";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ButtonCloseSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonCloseSession.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonCloseSession.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.ButtonCloseSession.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonCloseSession.FlatAppearance.BorderSize = 0;
+            this.ButtonCloseSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonCloseSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.ButtonCloseSession.ForeColor = System.Drawing.Color.White;
+            this.ButtonCloseSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonCloseSession.Location = new System.Drawing.Point(2, 412);
+            this.ButtonCloseSession.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonCloseSession.Name = "ButtonCloseSession";
+            this.ButtonCloseSession.Size = new System.Drawing.Size(171, 28);
+            this.ButtonCloseSession.TabIndex = 8;
+            this.ButtonCloseSession.Text = "Close Session";
+            this.ButtonCloseSession.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelUser
             // 
-            this.TableLayoutPanelUser.ColumnCount = 5;
-            this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TableLayoutPanelUser.ColumnCount = 2;
             this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.TableLayoutPanelUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelUser.Controls.Add(this.LabelUser, 1, 0);
-            this.TableLayoutPanelUser.Controls.Add(this.PanelUser, 0, 0);
-            this.TableLayoutPanelUser.Controls.Add(this.ButtonClose, 4, 0);
-            this.TableLayoutPanelUser.Controls.Add(this.ButtonMaximize, 3, 0);
-            this.TableLayoutPanelUser.Controls.Add(this.ButtonMnimize, 2, 0);
+            this.TableLayoutPanelUser.Controls.Add(this.LabelUser, 0, 0);
+            this.TableLayoutPanelUser.Controls.Add(this.PanelUser, 1, 0);
             this.TableLayoutPanelUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelUser.Location = new System.Drawing.Point(175, 0);
             this.TableLayoutPanelUser.Margin = new System.Windows.Forms.Padding(0);
@@ -310,80 +343,22 @@ namespace MySpotify.Views
             this.LabelUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.LabelUser.Location = new System.Drawing.Point(32, 0);
+            this.LabelUser.Location = new System.Drawing.Point(0, 0);
             this.LabelUser.Margin = new System.Windows.Forms.Padding(0);
             this.LabelUser.Name = "LabelUser";
-            this.LabelUser.Size = new System.Drawing.Size(572, 32);
+            this.LabelUser.Size = new System.Drawing.Size(674, 32);
             this.LabelUser.TabIndex = 4;
             this.LabelUser.Text = "My User";
-            this.LabelUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabelUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PanelUser
             // 
             this.PanelUser.BackColor = System.Drawing.Color.Transparent;
-            this.PanelUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelUser.Location = new System.Drawing.Point(0, 0);
+            this.PanelUser.Location = new System.Drawing.Point(674, 0);
             this.PanelUser.Margin = new System.Windows.Forms.Padding(0);
             this.PanelUser.Name = "PanelUser";
             this.PanelUser.Size = new System.Drawing.Size(32, 32);
             this.PanelUser.TabIndex = 3;
-            // 
-            // ButtonClose
-            // 
-            this.ButtonClose.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonClose.BackgroundImage = global::MySpotify.Properties.Resources.ic_close;
-            this.ButtonClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.ButtonClose.FlatAppearance.BorderSize = 0;
-            this.ButtonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ButtonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonClose.Location = new System.Drawing.Point(681, 7);
-            this.ButtonClose.Margin = new System.Windows.Forms.Padding(7);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(21, 18);
-            this.ButtonClose.TabIndex = 1;
-            this.ButtonClose.UseVisualStyleBackColor = false;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonCloseClick);
-            // 
-            // ButtonMaximize
-            // 
-            this.ButtonMaximize.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonMaximize.BackgroundImage = global::MySpotify.Properties.Resources.ic_maximize;
-            this.ButtonMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonMaximize.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.ButtonMaximize.FlatAppearance.BorderSize = 0;
-            this.ButtonMaximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ButtonMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonMaximize.Location = new System.Drawing.Point(646, 7);
-            this.ButtonMaximize.Margin = new System.Windows.Forms.Padding(7);
-            this.ButtonMaximize.Name = "ButtonMaximize";
-            this.ButtonMaximize.Size = new System.Drawing.Size(21, 18);
-            this.ButtonMaximize.TabIndex = 2;
-            this.ButtonMaximize.UseVisualStyleBackColor = false;
-            this.ButtonMaximize.Click += new System.EventHandler(this.ButtonMaximizeClick);
-            // 
-            // ButtonMnimize
-            // 
-            this.ButtonMnimize.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonMnimize.BackgroundImage = global::MySpotify.Properties.Resources.ic_minimize;
-            this.ButtonMnimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonMnimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonMnimize.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(202)))), ((int)(((byte)(88)))));
-            this.ButtonMnimize.FlatAppearance.BorderSize = 0;
-            this.ButtonMnimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ButtonMnimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ButtonMnimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonMnimize.Location = new System.Drawing.Point(611, 7);
-            this.ButtonMnimize.Margin = new System.Windows.Forms.Padding(7);
-            this.ButtonMnimize.Name = "ButtonMnimize";
-            this.ButtonMnimize.Size = new System.Drawing.Size(21, 18);
-            this.ButtonMnimize.TabIndex = 0;
-            this.ButtonMnimize.UseVisualStyleBackColor = false;
-            this.ButtonMnimize.Click += new System.EventHandler(this.ButtonMinimizeClick);
             // 
             // Dashboard
             // 
@@ -392,22 +367,15 @@ namespace MySpotify.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.ClientSize = new System.Drawing.Size(884, 442);
-            this.ControlBox = false;
             this.Controls.Add(this.TableLayoutPanelAll);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(900, 480);
             this.Name = "Dashboard";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
-            this.MaximizedBoundsChanged += new System.EventHandler(this.Dashboard_MaximizedBoundsChanged);
-            this.ResizeEnd += new System.EventHandler(this.Dashboard_ResizeEnd);
-            this.SizeChanged += new System.EventHandler(this.Dashboard_SizeChanged);
-            this.Resize += new System.EventHandler(this.Dashboard_Resize);
             this.TableLayoutPanelAll.ResumeLayout(false);
             this.TableLayoutPanelControls.ResumeLayout(false);
             this.TableLayoutPanelControls.PerformLayout();
@@ -429,16 +397,15 @@ namespace MySpotify.Views
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelBack;
         private System.Windows.Forms.Label LabelMySpotify;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ButtonFavoriteSongs;
+        private System.Windows.Forms.Button ButtonFavoriteAlbums;
         private System.Windows.Forms.Button ButtonFavoriteArtists;
         private System.Windows.Forms.Panel PanelControls;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ButtonCloseSession;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelUser;
-        private System.Windows.Forms.Button ButtonMaximize;
-        private System.Windows.Forms.Button ButtonMnimize;
-        private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.Panel PanelUser;
         private System.Windows.Forms.Label LabelUser;
+        internal System.Windows.Forms.Button ButtonBack;
+        internal System.Windows.Forms.Button ButtonNext;
     }
 }

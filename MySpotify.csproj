@@ -103,6 +103,12 @@
     <Compile Include="App\Views\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Views\FavoriteAlbumsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App\Views\FavoriteAlbumsControl.Designer.cs">
+      <DependentUpon>FavoriteAlbumsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Views\FavoriteArtistsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Views\FavoriteAlbumsControl.resx">
+      <DependentUpon>FavoriteAlbumsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Views\FavoriteArtistsControl.resx">
       <DependentUpon>FavoriteArtistsControl.cs</DependentUpon>
@@ -230,6 +239,10 @@
     <None Include="Resources\ic_maximize.png" />
     <None Include="Resources\ic_minimize.png" />
     <None Include="Resources\ic_user.png" />
+    <None Include="Resources\ic_next_gray.png" />
+    <None Include="Resources\ic_next_white.png" />
+    <None Include="Resources\ic_back_gray.png" />
+    <None Include="Resources\ic_back_white.png" />
     <Content Include="Spotify.ico" />
   </ItemGroup>
   <ItemGroup>

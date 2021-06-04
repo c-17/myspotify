@@ -88,11 +88,8 @@ namespace MySpotify.Models{
 
         internal static Artist GetRandomArtist(){
             try{
-                //Int32 ArtistId = new Random().Next(111233, 112500)+1;
-                
-                //String Response = Get(WebService+"artist.php?i="+ArtistId).Result;
-                String Response = Get(WebService+"artist.php?i=112435").Result;
-                
+                String Response = Get(WebService+"artist.php?i="+(new Random().Next(111233, 112500)+1)).Result;
+                //String Response = Get(WebService+"artist.php?i=112435").Result;
                 
                 Console.WriteLine("GetRandomArtist: "+Response);
 
@@ -133,7 +130,7 @@ namespace MySpotify.Models{
                     foreach(DataRow DataRow in DataTable.Rows){
                         Album Album = new Album(Artist, DataRow);
 
-                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.ic_album);
+                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.Thumbnail);
 
                         Album.Tracks = await GetTracks(Album);
 
@@ -215,7 +212,7 @@ namespace MySpotify.Models{
                     foreach(DataRow DataRow in DataTable.Rows){
                         Album Album = new Album(Artist, DataRow);
 
-                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.ic_album);
+                        Album.Thumbnail = await GetThumbnail(Album.URLThumbnail, Properties.Resources.Thumbnail);
 
                         Albums.Add(Album);
                         }

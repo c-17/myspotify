@@ -36,3 +36,6 @@ C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.csproj.CopyComplete
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Components.MyMessageBox.resources
 C:\Users\pc\Documents\Visual Studio 2019\Projects\MySpotify\obj\Debug\MySpotify.Views.FavoriteArtistsControl.resources
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpotify.Components.MyMessageBox.resources
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpotify.Views.FavoriteArtistsControl.resources
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\MySpotify\obj\Debug\MySpotify.Views.FavoriteAlbumsControl.resources

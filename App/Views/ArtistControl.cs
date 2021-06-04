@@ -17,18 +17,22 @@ using MySpotify.Components;
 namespace MySpotify.Views{
     internal partial class ArtistControl : UserControl{
         #region PROPERTIES
+        internal readonly Button ButtonNext;
+
         internal Artist Artist;
 
         internal Album Album;
         #endregion
         
         #region CONSTRUCTORS
-        internal ArtistControl(){
+        internal ArtistControl(Button ButtonNext){
             InitializeComponent();
 
             Dock = DockStyle.Fill;
 
-            PanelBackground2.BackColor = Color.FromArgb(75, 33, 33, 33);
+            this.ButtonNext = ButtonNext;
+
+            ButtonNext.Click += new EventHandler(ButtonNextClick);
 
             ParentChanged += new EventHandler(ArtistControlParentChanged);
 
@@ -39,16 +43,16 @@ namespace MySpotify.Views{
         #region FUNCTIONS
         internal ArtistControl UpdateArtist(Artist Artist, Album Album = null){
             this.Artist = Artist;
+            
+            ButtonNext.BackgroundImage = (((ButtonNext.Enabled = (Album != null)))?Properties.Resources.ic_next_white:Properties.Resources.ic_next_gray);
 
-            //ButtonBack.Visible = (Album != null);
-
-            PictureBoxArtist.BackgroundImage = Artist.Thumbnail;
+            PictureBox.BackgroundImage = Artist.Thumbnail;
 
             LabelName.Text = Artist.Name;
 
             LabelCountryGenre.Text = Artist.Genre+", "+Artist.Country;
 
-            LabelBiography.Text = Artist.Biography;
+            TextBoxBiography.Text = Artist.Biography;
 
             ButtonAddToFavorites.BackgroundImage = (User.Instance.Artists.Contains(Artist)?Properties.Resources.ic_favorite:Properties.Resources.ic_no_favorite);
 
@@ -98,21 +102,11 @@ namespace MySpotify.Views{
             /*if(Parent != null && Visible)
                 ActiveControl = DataGridView;*/
             }
-
-        private void TableLayoutPanelArtistPaint(object sender, PaintEventArgs e){
-            Graphics Graphics = e.Graphics;
-
-            Rectangle Rectangle = new Rectangle(0, 0, TableLayoutPanelArtist.Width, TableLayoutPanelArtist.Height);
-
-            Brush Brush = new LinearGradientBrush(Rectangle, Color.FromArgb(22, 22, 22), Color.FromArgb(33, 33, 33), LinearGradientMode.Vertical);  
-
-            Graphics.FillRectangle(Brush, Rectangle);
-            }
-
-        private void ButtonBackClick(Object Object, EventArgs EventArgs){
+        
+        private void ButtonNextClick(Object Object, EventArgs EventArgs){
             Dashboard.Instance.UpdateAlbum(Album);
             }
-
+        
         private void ButtonAddToFavoritesClick(Object Object, EventArgs EventArgs){
             if(User.Instance.Artists.Contains(Artist))
                 User.Instance.Artists.Remove(Artist);
@@ -138,9 +132,10 @@ namespace MySpotify.Views{
                 if(DataGridView.FirstDisplayedScrollingRowIndex > 0)
                     DataGridView.FirstDisplayedScrollingRowIndex--;
                 }
-            else if(MouseEventArgs.Delta < 0)
+            else if(MouseEventArgs.Delta < 0){
                 if(DataGridView.FirstDisplayedScrollingRowIndex < DataGridView.Rows.Count-1)
                     DataGridView.FirstDisplayedScrollingRowIndex++;
+                }
             }
         #endregion
         }
